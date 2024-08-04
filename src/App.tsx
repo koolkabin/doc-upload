@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [apiDate, setApiDate] = useState('');
+  const [apiDate, setApiDate] = useState("");
   const [apiRates, setApiRates] = useState([]);
 
   useEffect(() => {
-    console.log('check');
+    console.log("check");
     async function fetchFreeMovies() {
       const requestOptions = {
         method: "GET",
-        redirect: "follow"
+        redirect: "follow",
       };
 
-      fetch("https://latest.currency-api.pages.dev/v1/currencies/eur.json", requestOptions)
-      //fetch("api/v1/currencies/eur.json", requestOptions)
+      fetch("/currencies/eur.json", requestOptions)
+        //fetch("api/v1/currencies/eur.json", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           //const d1 = result
-          console.log(result, typeof(result));
+          console.log(result, typeof result);
           setApiDate(result.date);
           setApiRates(result.eur);
         })
@@ -30,7 +30,6 @@ function App() {
 
     // Call the function
     fetchFreeMovies();
-
   }, []);
   return (
     <>
@@ -58,14 +57,13 @@ function App() {
         <span>Date: {apiDate}</span>
         <p>Rates:</p>
         <ul>
-        {Object.keys(apiRates).map((key) => (
-          <li key={key}>{`${key}: ${apiRates[key]}`}</li>
-        ))}
+          {Object.keys(apiRates).map((key) => (
+            <li key={key}>{`${key}: ${apiRates[key]}`}</li>
+          ))}
         </ul>
-
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
