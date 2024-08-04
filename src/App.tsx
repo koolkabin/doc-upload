@@ -17,6 +17,7 @@ function App() {
       };
 
       fetch("https://latest.currency-api.pages.dev/v1/currencies/eur.json", requestOptions)
+      //fetch("api/v1/currencies/eur.json", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           //const d1 = result
